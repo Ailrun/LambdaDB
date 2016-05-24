@@ -1,9 +1,7 @@
 module Database.LambdaDB.DataType
   ( DBData(..),
     DataType(..),
-    Key,
-    None(..),
-    Set
+    Key
   ) where
 
 -- Hackage Libraries

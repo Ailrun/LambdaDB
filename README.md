@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/badge/Haskell-lts--5.18-lightgrey.svg?style=plastic)
 ![](https://img.shields.io/badge/stack->1.1-blue.svg?style=plastic)
-![](https://img.shields.io/badge/version-0.0.0.2-green.svg?style=plastic)
+![](https://img.shields.io/badge/version-0.0.0.3-green.svg?style=plastic)
 ![](https://img.shields.io/badge/status-alpha-orange.svg?style=plastic)
 
 ## Description ##

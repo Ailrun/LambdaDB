@@ -5,10 +5,11 @@ module Lib
   ) where
 
 -- Standard libraries
+import Data.Data
+
 import Control.Monad
 import Control.Monad.Trans.Class
 import Control.Monad.Trans.Maybe
-import Data.Data
 
 -- Custom libraries
 import Database.LambdaDB

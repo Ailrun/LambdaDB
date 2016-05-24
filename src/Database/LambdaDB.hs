@@ -4,9 +4,7 @@ module Database.LambdaDB
     DBData(..),
     initDB,
     insertData,
-    findData,
-    DataType,
-    None(..)
+    findData
   ) where
 
 import Database.LambdaDB.DataType

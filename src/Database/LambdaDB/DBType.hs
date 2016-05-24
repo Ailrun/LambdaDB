@@ -1,6 +1,5 @@
 module Database.LambdaDB.DBType
   (
-    Key,
     DB(..),
     initDB,
     insertData,
