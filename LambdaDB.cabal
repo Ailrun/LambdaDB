@@ -2,7 +2,7 @@ name:                LambdaDB
 version:             0.0.0.3
 synopsis:            On-memory Database using Lambda Function environment.
 description:         Please see README.md
-homepage:            https://github.com/ailrun/LambdaDB#readme
+homepage:            https://github.com/ailrun/LambdaDB/blob/master/README.md
 license:             BSD3
 license-file:        LICENSE
 author:              Junyoung Clare Jang
