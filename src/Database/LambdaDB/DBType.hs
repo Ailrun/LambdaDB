@@ -14,7 +14,7 @@ data DB = Lambda {unLambda::Key -> DBData}
 initDB :: DB
 initDB = Lambda
          $ (\_ -> DBNone None)
-  
+
 insertData :: Key -> DBData -> DB -> DB
 insertData key value db = Lambda
                           $ \x -> if (x == key) then

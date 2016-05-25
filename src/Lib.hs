@@ -14,13 +14,15 @@ import Control.Monad.Trans.Maybe
 -- Custom libraries
 import Database.LambdaDB
 
-dbInit :: IO ()
-dbInit = putStrLn "Initiate DB ..."
+dbInit :: IO DB
+dbInit = do
+  putStrLn "Initiate DB ..."
+  return initDB
 
-dbProc :: IO ()
-dbProc = void . runMaybeT $ do
+dbProc :: DB -> IO ()
+dbProc d = void . runMaybeT $ do
   lift . putStrLn $ "DB is now running"
-  void . g $ initDB
+  void . g $ d
   return ()
   where g db = do
           com <- lift getLine

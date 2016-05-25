@@ -4,6 +4,6 @@ import Lib
 
 main :: IO ()
 main = do
-  dbInit
-  dbProc
+  d <- dbInit
+  dbProc d
   dbTerm

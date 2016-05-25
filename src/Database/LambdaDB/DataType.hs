@@ -1,6 +1,7 @@
 module Database.LambdaDB.DataType
   ( DBData(..),
     DataType(..),
+    None(..),
     Key
   ) where
 
