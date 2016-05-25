@@ -1,0 +1,67 @@
+<commands> ::= <quit-command> | <status-command> | <insert-command> | <find-command> | <delete-command>
+
+<quit-command> ::= <any-quit>
+<any-quit> ::= <any-q> <any-u> <any-i> <any-t>
+
+<status-command> ::= <status-command-basic> | <status-command-basic> " " <status-options>
+<status-command-basic> ::= <any-status>
+<any-status> ::= <any-s> <any-t> <any-a> <any-t> <any-u> <any-s>
+<status-options> ::= <status-option> | <status-options> " " <status-option>
+;m : memory
+;s : size
+;t : average time
+<status-option> ::= "-" <any-m> | "-" <any-s> | "-" <any-t>
+
+<insert-command> ::= <insert-command-basic> | <insert-command-basic> " " <insert-options>
+<insert-command-basic> ::= <any-insert> " " <key-value>
+<any-insert> ::= <any-i> <any-n> <any-s> <any-e> <any-r> <any-t>
+<key-value> ::= <key> " " <value>
+<key> ::= <non-whitespace-text> | '"' <text> '"'
+<value> ::= <bool> | <char> | <int> | <integer> | <string> | <list> | <set> | <tree>
+<insert-options> ::= <insert-option> | <insert-options> " " <insert-option>
+;f : force
+;i : interactive
+;r : reference
+<insert-option> ::= "-" <any-f> | "-" <any-i> | "-" <any-r> " " <key>
+
+<find-command> ::= <find-command-basic> | <find-command-basic> " " <find-options>
+<find-command-basic> ::= <any-find> " " <key>
+<any-find> ::= <any-f> <any-i> <any-n> <any-d>
+<find-options> ::= <find-option> | <find-options> " " <find-option>
+;t : type only
+<find-option> ::= "-" <any-t>
+
+<delete-command> ::= <delete-command-basic> | <delete-command-basic> " " <delete-options>
+<delete-command-basic> ::= <any-delete> " " <key>
+<any-delete> ::= <any-d> <any-e> <any-l> <any-e> <any-t> <any-e>
+<delete-options> ::= <delete-option> | <delete-options> " " <delete-option>
+;f : force
+;i : interactive
+<delete-option> ::= "-" <any-f> | "-" <any-i>
+
+<any-a> = "a" | "A"
+<any-b> = "b" | "B"
+<any-c> = "c" | "C"
+<any-d> = "d" | "D"
+<any-e> = "e" | "E"
+<any-f> = "f" | "F"
+<any-g> = "g" | "G"
+<any-h> = "h" | "H"
+<any-i> = "i" | "I"
+<any-j> = "j" | "J"
+<any-k> = "k" | "K"
+<any-l> = "l" | "L"
+<any-m> = "m" | "M"
+<any-n> = "n" | "N"
+<any-o> = "o" | "O"
+<any-p> = "p" | "P"
+<any-q> = "q" | "Q"
+<any-r> = "r" | "R"
+<any-s> = "s" | "S"
+<any-t> = "t" | "T"
+<any-u> = "u" | "U"
+<any-v> = "v" | "V"
+<any-w> = "w" | "W"
+<any-x> = "x" | "X"
+<any-y> = "y" | "Y"
+<any-z> = "z" | "Z"
