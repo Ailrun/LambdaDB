@@ -25,23 +25,26 @@ All of these commands are case-insensitive.
 3. Insert
    Insert command.
    Needs 2 additional inputs.
-   ```
-   <b>insert</b>
-   Input Insert Key :
-   <b>a</b>
-   Input Insert Value :
-   <b>[1, 2, 3]</b>
-   ```
+
+```
+insert
+Input Insert Key :
+a
+Input Insert Value :
+[1, 2, 3]
+```
+
    *Will be changed*
 4. Find
    Find command.
    Needs 1 additional inputs.
-   ```
-   <b>find</b>
-   Input Find Key :
-   <b>a</b>
-   [1, 2, 3]
-   ```
+   
+```
+find
+Input Find Key :
+a
+[1, 2, 3]
+```
 
 ## TODO ##
 
