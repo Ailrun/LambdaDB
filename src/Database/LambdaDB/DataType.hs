@@ -1,12 +1,14 @@
 module Database.LambdaDB.DataType
-  ( DBData(..),
+  ( None(..),
+    DBData(..),
     DataType(..),
-    None(..),
     Key
   ) where
 
 -- Hackage Libraries
 import Data.Set
+
+data None = None deriving (Eq, Ord, Show, Read)
 
 data DBData = DBNone None
             | DBBool Bool
@@ -15,30 +17,52 @@ data DBData = DBNone None
             | DBInteger Integer
             | DBList ([DBData])
             | DBSet (Set DBData)
-            deriving (Eq, Ord, Read)
+            deriving (Eq, Ord)
+
+instance Read DBData where
+  readsPrec d r =
+    readParen (d > app_prec)
+    (\x -> [(DBNone None, t) |
+            ("None", t) <- lex x]) r
+    ++
+    readParen (d > app_prec)
+    (\x -> [(DBBool b, t) |
+            (b, t) <- readsPrec (app_prec + 1) x]) r
+    ++
+    readParen (d > app_prec)
+    (\x -> [(DBChar c, t) |
+            (c, t) <- readsPrec (app_prec + 1) x]) r
+    ++
+    readParen (d > app_prec)
+    (\x -> [(DBInt i, t) |
+            (i, t) <- readsPrec (app_prec + 1) x]) r
+    ++
+    readParen (d > app_prec)
+    (\x -> [(DBInteger ii, t) |
+            (ii, s) <- readsPrec (app_prec + 1) x,
+            ("i", t) <- lex s]) r
+    ++
+    readParen (d > app_prec)
+    (\x -> [(DBList l, t) |
+            (l, t) <- readsPrec (app_prec + 1) x]) r
+    where app_prec = 10
 
 instance Show DBData where
   showsPrec d r = case r of
     DBNone None -> showString "None"
-                   
-    DBBool b -> showsPrec (d) b
-                
-    DBChar c -> showsPrec (d) c
-                
-    DBInt i -> showsPrec (d) i
-               
+    DBBool b -> showsPrec d b
+    DBChar c -> showsPrec d c
+    DBInt i -> showsPrec d i
     DBInteger ii -> showParen (d > app_prec)
-                    $ showString "I" . showsPrec (app_prec+1) ii
-
+                    $ showsPrec (app_prec+1) ii . showString "i"
     DBList l -> showsPrec d l
-
     DBSet s -> showsPrec d s
     where app_prec = 10
 
 type Key = String
 
-data None = None deriving (Eq, Ord, Show, Read)
 
+-- Is this needed?
 class (Eq a, Read a, Show a) => DataType a where
   defaultValue :: a
   toDBData :: a -> DBData
