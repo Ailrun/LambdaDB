@@ -1,10 +1,10 @@
 # Lambda DB #
 
-![](https://img.shields.io/badge/Haskell-lts--5.18-lightgrey.svg?style=plastic)
-![](https://img.shields.io/badge/stack->1.1-blue.svg?style=plastic)
-![](https://img.shields.io/badge/version-0.0.0.4-green.svg?style=plastic)
-![](https://img.shields.io/badge/status-alpha-orange.svg?style=plastic)
-![](https://img.shields.io/badge/build-success-green.svg?style=plastic)
+![](https://img.shields.io/badge/Haskell-lts--5.18-lightgrey.svg?style=plastic&link=https://www.haskell.org/downloads)
+![](https://img.shields.io/badge/stack->1.1-blue.svg?style=plastic&link=http://docs.haskellstack.org/en/stable/README/)
+![](https://img.shields.io/badge/version-0.0.0.4-green.svg?style=plastic&link=http://github.com/ailrun/LambdaDB)
+![](https://img.shields.io/badge/status-alpha-orange.svg?style=plastic&link=http://github.com/ailrun/LambdaDB)
+![](https://img.shields.io/badge/build-passing-brightgreen.svg?style=plastic&link=http://github.com/ailrun/LambdaDB)
 
 ## Table Of Contents ##
 
@@ -79,19 +79,21 @@ a
 
 ### Preserved commads ###
  Commands | Description
-:--------:|:--------------------------:
+:--------:|-------------
  Delete | Delete a data. Same with `Insert Key None`
 
 ## TODO ##
 
-- [ ] Use Lambda Calculation to reduce lambda.
 - [ ] Support more general data structure.
 - [x] Change insert value more intuitively.
 - [ ] Change commands more program friendly, i.e. without additional inputs.
+- [ ] Seperate server parts and client parts
 - [ ] Concerning about using parsec.
 
 ## Author ##
-Junyoung Clare Jang ([github](https://github.com/ailrun), [blog](https://ailrun.github.io))
+Junyoung Clare Jang
+* @Ailrun, [github](https://github.com/ailrun)
+* [blog](https://ailrun.github.io)
 
 ## License ##
 Read the [LICENSE](LICENSE) file.
