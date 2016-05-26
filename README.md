@@ -6,10 +6,17 @@
 [![](https://img.shields.io/badge/status-alpha-orange.svg?style=plastic)](http://github.com/ailrun/LambdaDB)
 [![](https://img.shields.io/badge/build-passing-brightgreen.svg?style=plastic)](http://github.com/ailrun/LambdaDB)
 
+## Description ##
+
+On-memory Database based on Lambda function
+
+<b> Stable Version : 0.0.0.4 </b>  
+<b> Lastest Version : 0.0.0.5 </b>
+
 ## Table Of Contents ##
 
-* [Table Of Contents](#table-of-contents)
 * [Description](#description)
+* [Table Of Contents](#table-of-contents)
 * [Supporting Data Type](#supporting-data-type)
 * [Commands](#commands)
   * [Current commands](#current-commands)
@@ -18,35 +25,28 @@
 	* [Insert](#insert)
 	* [Find](#find)
   * [Preserved commands](#preserved-commands)
+* [Update Log](#update-log)
 * [TODO](#todo)
 * [Author](#author)
 * [License](#license)
-
-
-## Description ##
-
-On-memory Database based on Lambda function
-
-<b> Stable Version : 0.0.0.4 </b>  
-<b> Lastest Version : 0.0.0.5 </b>
 
 ## Supporting Data Type ##
 
 1. None  
    Default Value for all keys.
-2. Boolean
+2. Boolean  
    True or False.
-3. Int
+3. Int  
    Limited Integer Value. Represented by digits. `123`
-4. Integer
+4. Integer  
    Unlimited Integer Value. Represented by digits having character "i" on the end. `123i`
-5. Character
+5. Character  
    Character Value. Represented by a character surrounded with '. `'b'`
-6. String
+6. String  
    String Value. Represented by a character sequence surrounded with ". `"this is string"'`
-7. List
+7. List  
    List Value. Represented like `[1, 2, 3]`
-8. ~~Set~~
+8. ~~Set~~  
    Will be supported.
 
 ## Commands ##
@@ -93,6 +93,9 @@ find 5
  Commands | Description
 :--------:|-------------
  Delete | Delete a data. Same with `Insert Key None`
+ 
+## Update Log ##
+See [UpdateLog.md](UpdateLog.md) file.
 
 ## TODO ##
 
