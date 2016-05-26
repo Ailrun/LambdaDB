@@ -11,10 +11,12 @@
 * [Table Of Contents](#table-of-contents)
 * [Description](#description)
 * [Commands](#commands)
-  * [Quit](#quit)
-  * [Status](#status)
-  * [Insert](#insert)
-  * [Find](#find)
+  * [Current commands](#current-commands)
+	* [Quit](#quit)
+	* [Status](#status)
+	* [Insert](#insert)
+	* [Find](#find)
+  * [Preserved commands](#preserved-commands)
 * [TODO](#todo)
 * [Author](#author)
 * [License](#license)
@@ -24,11 +26,11 @@
 
 On-memory Database based on Lambda function
 
-### Commands ###
+## Commands ##
 
 All of these commands are case-insensitive.
 
-#### Current commads ####
+### Current commads ###
  Commands | Number of additional inputs | Description
 :--------:|:---------------------------:|-------------
  Quit   | 0 | Quit DB process
@@ -37,11 +39,6 @@ All of these commands are case-insensitive.
  Find   | 1 | Find the value data using key
 
 *Commands with additional inputs will be changed to use options instead of additional inputs*
-
-#### Preserved commads ####
- Commands | Description
-:--------:|:--------------------------:
- Delete | Delete a data. Same with `Insert Key None`
 
 #### Quit ####
 
@@ -79,6 +76,11 @@ Input Find Key :
 a
 [1, 2, 3]
 ```
+
+### Preserved commads ###
+ Commands | Description
+:--------:|:--------------------------:
+ Delete | Delete a data. Same with `Insert Key None`
 
 ## TODO ##
 
