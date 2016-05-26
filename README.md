@@ -6,6 +6,20 @@
 ![](https://img.shields.io/badge/status-alpha-orange.svg?style=plastic)
 ![](https://img.shields.io/badge/build-success-green.svg?style=plastic)
 
+## Table Of Contents ##
+
+* [Table Of Contents](#table-of-contents)
+* [Description](#description)
+* [Commands](#commands)
+  * [Quit](#quit)
+  * [Status](#status)
+  * [Insert](#insert)
+  * [Find](#find)
+* [TODO](#todo)
+* [Author](#author)
+* [License](#license)
+
+
 ## Description ##
 
 On-memory Database based on Lambda function
@@ -14,21 +28,28 @@ On-memory Database based on Lambda function
 
 All of these commands are case-insensitive.
 
+ Commands | Number of additional inputs 
+----------|-----------------------------
+ Quit | 0
+ Status | 0
+ Insert | 2
+ Find | 1
+
 *Commands with additional inputs will be changed to use options instead of additional inputs*
 
 #### Quit ####
 
-Quit command.
+Quit command.  
 There is no additional inputs.
    
 #### Status ####
    
-Status check command.
+Status check command.  
 *Not implemented correctly yet*
 
 #### Insert ####
    
-Insert command.
+Insert command.  
 Needs 2 additional inputs.
 
 ```
@@ -43,7 +64,7 @@ Input Insert Value :
 
 #### Find ####
 
-Find command.
+Find command.  
 Needs 1 additional inputs.
 
 ```
@@ -63,3 +84,6 @@ a
 
 ## Author ##
 Junyoung Clare Jang ([github](https://github.com/ailrun), [blog](https://ailrun.github.io))
+
+## License ##
+Read the [LICENSE](LICENSE) file.
