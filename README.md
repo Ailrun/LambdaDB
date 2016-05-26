@@ -28,14 +28,20 @@ On-memory Database based on Lambda function
 
 All of these commands are case-insensitive.
 
- Commands | Number of additional inputs 
-----------|-----------------------------
- Quit | 0
- Status | 0
- Insert | 2
- Find | 1
+#### Current commads ####
+ Commands | Number of additional inputs | Description
+:--------:|:---------------------------:|-------------
+ Quit   | 0 | Quit DB process
+ Status | 0 | Check DB status
+ Insert | 2 | Insert a value data with key
+ Find   | 1 | Find the value data using key
 
 *Commands with additional inputs will be changed to use options instead of additional inputs*
+
+#### Preserved commads ####
+ Commands | Description
+:--------:|:--------------------------:
+ Delete | Delete a data. Same with `Insert Key None`
 
 #### Quit ####
 
