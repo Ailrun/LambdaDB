@@ -21,7 +21,9 @@ All of these commands are case-insensitive.
    There is no additional inputs.
 2. Status
    Status check command.
-   *Not implemented correctly yet*
+
+	*Not implemented correctly yet*
+
 3. Insert
    Insert command.
    Needs 2 additional inputs.
@@ -35,6 +37,7 @@ Input Insert Value :
 ```
 
    *Will be changed*
+
 4. Find
    Find command.
    Needs 1 additional inputs.
