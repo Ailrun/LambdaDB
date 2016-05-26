@@ -91,7 +91,7 @@ a
 - [ ] Concerning about using parsec.
 
 ## Author ##
-Junyoung Clare Jang
+Junyoung Clare Jang @ KR
 * @Ailrun, [github](https://github.com/ailrun)
 * [blog](https://ailrun.github.io)
 
