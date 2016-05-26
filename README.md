@@ -10,6 +10,7 @@
 
 * [Table Of Contents](#table-of-contents)
 * [Description](#description)
+* [Supporting Data Structure](#supporting-data-structure)
 * [Commands](#commands)
   * [Current commands](#current-commands)
 	* [Quit](#quit)
@@ -26,24 +27,36 @@
 
 On-memory Database based on Lambda function
 
+<b> Stable Version : 0.0.0.4 </b>  
+<b> Lastest Version : 0.0.0.5 </b>
+
+## Supporting Data Structure ##
+
+1. None  
+   Default Value for all keys.
+2. Boolean
+   True or False.
+3. Int
+   Limited Integer Value. Represented by digits.
+4. Integer
+   Unlimited Integer Value. Represented by digits having character "i" on the end.
+5. Character
+
 ## Commands ##
 
 All of these commands are case-insensitive.
 
 ### Current commads ###
- Commands | Number of additional inputs | Description
-:--------:|:---------------------------:|-------------
- Quit   | 0 | Quit DB process
- Status | 0 | Check DB status
- Insert | 2 | Insert a value data with key
- Find   | 1 | Find the value data using key
-
-*Commands with additional inputs will be changed to use options instead of additional inputs*
+ Commands | Form | Description
+:--------:|------|-------------
+ Quit   | quit | Quit DB process
+ Status | status | Check DB status
+ Insert | insert <key> <value> | Insert a value data with key
+ Find   | find <key> | Find the value data using key
 
 #### Quit ####
 
-Quit command.  
-There is no additional inputs.
+Quit command.
    
 #### Status ####
    
@@ -53,27 +66,19 @@ Status check command.
 #### Insert ####
    
 Insert command.  
-Needs 2 additional inputs.
+Needs Key(Any String without whitespace) and Values.
 
 ```
-insert
-Input Insert Key :
-a
-Input Insert Value :
-[1, 2, 3]
+insert 5 [1, 2, 3]
 ```
-
-*Will be changed*
 
 #### Find ####
 
 Find command.  
-Needs 1 additional inputs.
+Needs Key(Any String without whitespace)
 
 ```
-find
-Input Find Key :
-a
+find 5
 [1, 2, 3]
 ```
 
@@ -86,8 +91,9 @@ a
 
 - [ ] Support more general data structure.
 - [x] Change insert value more intuitively.
-- [ ] Change commands more program friendly, i.e. without additional inputs.
-- [ ] Seperate server parts and client parts
+- [x] Change commands more program friendly, i.e. without additional inputs.
+- [ ] Authorization System.
+- [ ] Seperate server parts and client parts.
 - [ ] Concerning about using parsec.
 
 ## Author ##

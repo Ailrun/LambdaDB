@@ -12,6 +12,7 @@ data None = None deriving (Eq, Ord, Show, Read)
 data DBData = DBNone None
             | DBBool Bool
             | DBChar Char
+            | DBString String
             | DBInt Int
             | DBInteger Integer
             | DBList ([DBData])
@@ -29,6 +30,9 @@ instance Read DBData where
     ++ readParen (d > app_prec)
     (\x -> [(DBChar c, t) |
             (c, t) <- readsPrec (app_prec + 1) x]) r
+    ++ readParen (d > app_prec)
+    (\x -> [(DBString s, t) |
+            (s, t) <- readsPrec (app_prec + 1) x]) r
     ++ readParen (d > app_prec)
     (\x -> [(DBInt i, t) |
             (i, t) <- readsPrec (app_prec + 1) x]) r
