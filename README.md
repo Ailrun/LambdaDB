@@ -10,7 +10,7 @@
 
 * [Table Of Contents](#table-of-contents)
 * [Description](#description)
-* [Supporting Data Structure](#supporting-data-structure)
+* [Supporting Data Type](#supporting-data-type)
 * [Commands](#commands)
   * [Current commands](#current-commands)
 	* [Quit](#quit)
@@ -30,17 +30,24 @@ On-memory Database based on Lambda function
 <b> Stable Version : 0.0.0.4 </b>  
 <b> Lastest Version : 0.0.0.5 </b>
 
-## Supporting Data Structure ##
+## Supporting Data Type ##
 
 1. None  
    Default Value for all keys.
 2. Boolean
    True or False.
 3. Int
-   Limited Integer Value. Represented by digits.
+   Limited Integer Value. Represented by digits. `123`
 4. Integer
-   Unlimited Integer Value. Represented by digits having character "i" on the end.
+   Unlimited Integer Value. Represented by digits having character "i" on the end. `123i`
 5. Character
+   Character Value. Represented by a character surrounded with '. `'b'`
+6. String
+   String Value. Represented by a character sequence surrounded with ". `"this is string"'`
+7. List
+   List Value. Represented like `[1, 2, 3]`
+8. ~~Set~~
+   Will be supported.
 
 ## Commands ##
 
@@ -66,7 +73,7 @@ Status check command.
 #### Insert ####
    
 Insert command.  
-Needs Key(Any String without whitespace) and Values.
+Needs Key(Any String without whitespace) and [Values](#supporting-data-type).
 
 ```
 insert 5 [1, 2, 3]
