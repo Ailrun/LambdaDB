@@ -19,19 +19,16 @@ All of these commands are case-insensitive.
 #### Quit ####
 
 Quit command.
-   
 There is no additional inputs.
    
 #### Status ####
    
 Status check command.
-
 *Not implemented correctly yet*
 
 #### Insert ####
    
 Insert command.
-   
 Needs 2 additional inputs.
 
 ```
@@ -45,11 +42,10 @@ Input Insert Value :
 *Will be changed*
 
 #### Find ####
-   
+
 Find command.
-   
 Needs 1 additional inputs.
-   
+
 ```
 find
 Input Find Key :
