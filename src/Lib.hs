@@ -32,8 +32,8 @@ dbProc d = void . runMaybeT $ do
                     case (read com) of
                       ComQuit -> mzero
                       ComStatus -> lift . dbStatus $ db
-                      ComInsert -> lift . dbInsert $ db
-                      ComFind -> lift . dbFind $ db
+                      ComInsert k v -> lift . dbInsert k v $ db
+                      ComFind k -> lift . dbFind k $ db
                       _ -> do
                         lift . putStrLn $ "Command Error"
                         return db
@@ -44,18 +44,12 @@ dbStatus db = do
   putStrLn "On running"
   return db
 
-dbInsert :: DB -> IO DB
-dbInsert db = do
-  putStrLn "Input Insert Key:"
-  k <- getLine
-  putStrLn "Input Insert Value:"
-  v <- getLine
-  return . insertData k (read v::DBData) $ db
+dbInsert :: Key -> DBData -> DB -> IO DB
+dbInsert k v db = do
+  return . insertData k v $ db
 
-dbFind :: DB -> IO DB
-dbFind db = do
-  putStrLn "Input Find Key:"
-  k <- getLine
+dbFind :: Key -> DB -> IO DB
+dbFind k db = do
   putStrLn . show . findData k $ db
   return db
 

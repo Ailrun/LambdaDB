@@ -4,31 +4,37 @@ module Database.LambdaDB.Command
 
 import Data.Char
 
-data Command = ComError | ComQuit | ComStatus | ComInsert | ComFind
+import Database.LambdaDB.DataType
 
-validComList :: [Command]
-validComList = [ComQuit, ComStatus, ComInsert, ComFind]
-
-comToString :: Command -> String
-comToString com = case com of
-  ComQuit -> "quit"
-  ComStatus -> "status"
-  ComInsert -> "insert"
-  ComFind -> "find"
-  _ -> ""
+data Command = ComError
+             | ComQuit
+             | ComStatus
+             | ComInsert Key DBData
+             | ComFind Key
+             deriving (Show)
 
 instance Read Command where
   readsPrec d r =
-    (foldl (\acc c -> (readParen (d > app_prec)
-                       (\x -> [(c, t) |
-                               (s, t) <- lex x,
-                               l <- [map toLower s],
-                               l == comToString c]) r) ++ acc)
-     [] validComList)
+    readParen (d > app_prec)
+    (\x -> [(ComQuit, t) |
+            (s, t) <- lex x,
+            "quit" <- [map toLower s]]) r
     ++
-    (readParen (d > app_prec)
-     (\x -> [(ComError, t) |
-             (s, t) <- lex x ,
-             l <- [map toLower s],
-             l `notElem` (map comToString validComList)]) r)
+    readParen (d > app_prec)
+    (\x -> [(ComStatus, t) |
+            (s, t) <- lex x,
+            "status" <- [map toLower s]]) r
+    ++
+    readParen (d > app_prec)
+    (\x -> [(ComInsert k (read y), w) |
+            (s, t) <- lex x,
+            "insert" <- [map toLower s],
+            (k, u) <- lex t,
+            (y, w) <- lex u]) r
+    ++
+    readParen (d > app_prec)
+    (\x -> [(ComFind k, u) |
+             (s, t) <- lex x,
+             "find" <- [map toLower s],
+             (k, u) <- lex t]) r
     where app_prec = 10

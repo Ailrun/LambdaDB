@@ -1,7 +1,6 @@
 module Database.LambdaDB.DataType
   ( None(..),
     DBData(..),
-    DataType(..),
     Key
   ) where
 
@@ -24,25 +23,20 @@ instance Read DBData where
     readParen (d > app_prec)
     (\x -> [(DBNone None, t) |
             ("None", t) <- lex x]) r
-    ++
-    readParen (d > app_prec)
+    ++ readParen (d > app_prec)
     (\x -> [(DBBool b, t) |
             (b, t) <- readsPrec (app_prec + 1) x]) r
-    ++
-    readParen (d > app_prec)
+    ++ readParen (d > app_prec)
     (\x -> [(DBChar c, t) |
             (c, t) <- readsPrec (app_prec + 1) x]) r
-    ++
-    readParen (d > app_prec)
+    ++ readParen (d > app_prec)
     (\x -> [(DBInt i, t) |
             (i, t) <- readsPrec (app_prec + 1) x]) r
-    ++
-    readParen (d > app_prec)
+    ++ readParen (d > app_prec)
     (\x -> [(DBInteger ii, t) |
             (ii, s) <- readsPrec (app_prec + 1) x,
             ("i", t) <- lex s]) r
-    ++
-    readParen (d > app_prec)
+    ++ readParen (d > app_prec)
     (\x -> [(DBList l, t) |
             (l, t) <- readsPrec (app_prec + 1) x]) r
     where app_prec = 10
@@ -60,7 +54,6 @@ instance Show DBData where
     where app_prec = 10
 
 type Key = String
-
 
 -- Is this needed?
 class (Eq a, Read a, Show a) => DataType a where
