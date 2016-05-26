@@ -16,17 +16,23 @@ All of these commands are case-insensitive.
 
 *Commands with additional inputs will be changed to use options instead of additional inputs*
 
-1. Quit
-   Quit command.
-   There is no additional inputs.
-2. Status
-   Status check command.
+#### Quit ####
 
-	*Not implemented correctly yet*
+Quit command.
+   
+There is no additional inputs.
+   
+#### Status ####
+   
+Status check command.
 
-3. Insert
-   Insert command.
-   Needs 2 additional inputs.
+*Not implemented correctly yet*
+
+#### Insert ####
+   
+Insert command.
+   
+Needs 2 additional inputs.
 
 ```
 insert
@@ -36,11 +42,13 @@ Input Insert Value :
 [1, 2, 3]
 ```
 
-   *Will be changed*
+*Will be changed*
 
-4. Find
-   Find command.
-   Needs 1 additional inputs.
+#### Find ####
+   
+Find command.
+   
+Needs 1 additional inputs.
    
 ```
 find
