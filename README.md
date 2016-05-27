@@ -23,6 +23,7 @@ On-memory Database based on Lambda function
 	* [Quit](#quit)
 	* [Status](#status)
 	* [Insert](#insert)
+	* [Delete](#delete)
 	* [Find](#find)
   * [Preserved commands](#preserved-commands)
 * [Test](#test)
@@ -59,6 +60,7 @@ All of these commands are case-insensitive.
  Quit   | quit | Quit DB process
  Status | status | Check DB status
  Insert | insert <key> <value> | Insert a value data with key
+ Delete | delete <key> | Delete a value data using key
  Find   | find <key> | Find the value data using key
 
 #### Quit ####
@@ -79,6 +81,17 @@ Needs Key(Any String without whitespace) and [Values](#supporting-data-type).
 insert 5 [1, 2, 3]
 ```
 
+#### Delete ####
+
+Delete command.  
+Needs Key(AnyString without whitespace).
+
+```
+delete 5
+```
+
+Until options supporting, this command is just alias of `insert 5 None`.
+
 #### Find ####
 
 Find command.  
@@ -90,9 +103,6 @@ find 5
 ```
 
 ### Preserved commads ###
- Commands | Description
-:--------:|-------------
- Delete | Delete a data. Same with `Insert Key None`
 
 ## Test ##
 Basic test with stack is provided.  
