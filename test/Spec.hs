@@ -24,15 +24,15 @@ instance Arbitrary DBData where
 
 ruleInsertFind :: Key -> [DBData] -> Bool
 ruleInsertFind k vs =
-  let ruleHelper k [] db = (findData k db) == DBNone None
-      ruleHelper k (x:[]) db =
-        let dbn = insertData k x db
-            xFind = (findData k dbn)
+  let ruleHelper key [] db = (findData key db) == DBNone None
+      ruleHelper key (x:[]) db =
+        let dbn = insertData key x db
+            xFind = (findData key dbn)
         in xFind == x
-      ruleHelper k (x:xs) db =
-        let dbn = insertData k x db
-            xFind = (findData k dbn)
-        in xFind == x && ruleHelper k xs dbn
+      ruleHelper key (x:xs) db =
+        let dbn = insertData key x db
+            xFind = (findData key dbn)
+        in xFind == x && ruleHelper key xs dbn
   in
     ruleHelper k vs initDB
 

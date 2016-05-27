@@ -5,8 +5,6 @@ module Lib
   ) where
 
 -- Standard libraries
-import Data.Data
-
 import Control.Monad
 import Control.Monad.Trans.Class
 import Control.Monad.Trans.Maybe
@@ -33,6 +31,7 @@ dbProc d = void . runMaybeT $ do
                       ComQuit -> mzero
                       ComStatus -> lift . dbStatus $ db
                       ComInsert k v -> lift . dbInsert k v $ db
+                      ComDelete k -> lift. dbInsert k (DBNone None) $ db
                       ComFind k -> lift . dbFind k $ db
                       _ -> do
                         lift . putStrLn $ "Command Error"
