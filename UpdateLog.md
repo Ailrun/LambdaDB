@@ -3,3 +3,4 @@ Start Logging.
 
 1. Add String Type
 2. Change commads not to use additional inputs
+3. Add Test cases
