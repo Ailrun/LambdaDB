@@ -10,7 +10,7 @@
 
 On-memory Database based on Lambda function
 
-<b> Stable Version : 0.0.0.4 </b>  
+<b> Stable Version : 0.0.0.5 </b>  
 <b> Lastest Version : 0.0.0.5 </b>
 
 ## Table Of Contents ##
@@ -25,6 +25,7 @@ On-memory Database based on Lambda function
 	* [Insert](#insert)
 	* [Find](#find)
   * [Preserved commands](#preserved-commands)
+* [Test](#test)
 * [Update Log](#update-log)
 * [TODO](#todo)
 * [Author](#author)
@@ -45,9 +46,8 @@ On-memory Database based on Lambda function
 6. String  
    String Value. Represented by a character sequence surrounded with ". `"this is string"'`
 7. List  
-   List Value. Represented like `[1, 2, 3]`
-8. ~~Set~~  
-   Will be supported.
+   List Value. Represented like `[1, 2, 3]`  
+   In current version, you can write lists like `[1, 'c', 'b']`, but this act will be deprecated.
 
 ## Commands ##
 
@@ -93,7 +93,11 @@ find 5
  Commands | Description
 :--------:|-------------
  Delete | Delete a data. Same with `Insert Key None`
- 
+
+## Test ##
+Basic test with stack is provided.  
+Run `stack test` to check the result.
+
 ## Update Log ##
 See [UpdateLog.md](UpdateLog.md) file.
 

@@ -2,6 +2,7 @@ module Database.LambdaDB
   ( Command(..),
     DB(..),
     DBData(..),
+    None(..),
     Key,
     initDB,
     insertData,

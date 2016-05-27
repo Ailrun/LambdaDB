@@ -2,3 +2,4 @@
 *~
 #stack build files
 /.stack-work/
+/dist/

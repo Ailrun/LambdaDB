@@ -50,6 +50,7 @@ instance Show DBData where
     DBNone None -> showString "None"
     DBBool b -> showsPrec d b
     DBChar c -> showsPrec d c
+    DBString s -> showString s
     DBInt i -> showsPrec d i
     DBInteger ii -> showParen (d > app_prec)
                     $ showsPrec (app_prec+1) ii . showString "i"
