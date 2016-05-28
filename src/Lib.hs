@@ -8,6 +8,7 @@ import Control.Monad
 import Control.Monad.Trans.Class
 import Control.Monad.Trans.Maybe
 import Database.LambdaDB
+import GHC.Stats
 
 dbInit :: IO DB
 dbInit = do
@@ -22,25 +23,35 @@ dbProc db = void . runMaybeT $ do
     go db = do
       com <- lift getLine
       newdb <-
-        case com of
-          "" -> return db
-          _ ->
-            case reads com of
-              (ComQuit, _):_ -> mzero
-              (ComStatus, _):_ -> lift . dbStatus $ db
-              (ComInsert k v, _):_ -> lift . dbInsert k v $ db
-              (ComDelete k, _):_ -> do
-                lift. print $ k
-                lift. dbInsert k (DBNone None) $ db
-              (ComFind k, _):_ -> lift . dbFind k $ db
-              _ -> do
-                lift . putStrLn $ "Command Error"
-                return db
+        if com == ""
+        then mzero
+        else runCorrectCommand (reads com)
       go newdb
+      where
+        runCorrectCommand [] = do
+          lift . putStrLn $ "Command Error"
+          mzero
+        runCorrectCommand ((c, ""):_) = runCommand c
+        runCorrectCommand (_:cs) = runCorrectCommand cs
+
+        runCommand ComQuit = mzero
+        runCommand ComStatus = lift . dbStatus $ db
+        runCommand (ComInsert k v) = lift . dbInsert k v $ db
+        runCommand (ComDelete k) = do
+          lift . print $ k
+          lift . dbInsert k (DBNone None) $ db
+        runCommand (ComFind k) = lift . dbFind k $ db
 
 dbStatus :: DB -> IO DB
 dbStatus db = do
   putStrLn "On running"
+  isRtsStatsEnabled <- getRTSStatsEnabled
+  when isRtsStatsEnabled $ do
+    rtsStats <- getRTSStats
+    putStr "CPU TIME: "
+    print $ cpu_ns rtsStats
+    putStr "MEMORY USAGE: "
+    print $ max_live_bytes rtsStats
   return db
 
 dbInsert :: Key -> DBData -> DB -> IO DB
