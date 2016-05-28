@@ -1,4 +1,5 @@
 ### 0.0.0.6 ###
+__Fix Critical Error on Command 'Insert'__
 
 1. Add Delete command
 2. Add test cases for Delete command
