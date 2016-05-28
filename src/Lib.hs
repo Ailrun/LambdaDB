@@ -28,11 +28,13 @@ dbProc d = void . runMaybeT $ do
                   "" -> lift . return $ db
                   _ ->
                     case (readsPrec 0 com) of
-                      (ComQuit,_):_ -> mzero
-                      (ComStatus,_):_ -> lift . dbStatus $ db
-                      (ComInsert k v,_):_ -> lift . dbInsert k v $ db
-                      (ComDelete k,_):_ -> lift. dbInsert k (DBNone None) $ db
-                      (ComFind k,_):_ -> lift . dbFind k $ db
+                      (ComQuit, _):_ -> mzero
+                      (ComStatus, _):_ -> lift . dbStatus $ db
+                      (ComInsert k v, _):_ -> lift . dbInsert k v $ db
+                      (ComDelete k, _):_ -> do
+                        lift. print $ k
+                        lift. dbInsert k (DBNone None) $ db
+                      (ComFind k, _):_ -> lift . dbFind k $ db
                       _ -> do
                         lift . putStrLn $ "Command Error"
                         return db

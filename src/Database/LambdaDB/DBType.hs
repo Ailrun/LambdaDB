@@ -20,7 +20,7 @@ insertData key value db = Lambda
                           $ \x -> if (x == key) then
                                     value
                                   else
-                                    unLambda db key
+                                    unLambda db x
 
 findData :: Key -> DB -> DBData
 findData key db = unLambda db key
