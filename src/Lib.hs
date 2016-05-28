@@ -51,8 +51,29 @@ dbStatus db = do
     putStr "CPU TIME: "
     print $ cpu_ns rtsStats
     putStr "MEMORY USAGE: "
-    print $ max_live_bytes rtsStats
+    putStrLn . flip addUnitTo "B" $ max_live_bytes rtsStats
   return db
+
+addUnitTo :: (Show a, Ord a, Integral a) => a -> String -> String
+addUnitTo i base
+  | i < unitK = show i <> base
+  | i < unitM = makeFloatString 1 $ "K" <> base
+  | i < unitG = makeFloatString unitK $ "M" <> base
+  | i < unitT = makeFloatString unitM $ "G" <> base
+  | otherwise = makeFloatString unitG $ "T" <> base
+  where
+    makeFloatString downUnit unitBase =
+      let
+        trimmed = div i downUnit
+        (up, down) = quotRem trimmed unitGap
+      in
+        show up <> "." <> show down <> unitBase
+
+    unitGap = 10^3
+    unitK = unitGap
+    unitM = unitGap * unitK
+    unitG = unitGap * unitM
+    unitT = unitGap * unitG
 
 dbInsert :: Key -> DBData -> DB -> IO DB
 dbInsert k v db = do

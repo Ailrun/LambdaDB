@@ -69,7 +69,13 @@ Quit command.
 #### Status ####
    
 Status check command.  
-*Not implemented correctly yet*
+
+```
+status
+ON RUNNING
+CPU TIME: 0.0
+MEMORY USAGE: 89KB
+```
 
 #### Insert ####
    
