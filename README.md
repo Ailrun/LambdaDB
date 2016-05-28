@@ -10,7 +10,7 @@
 
 On-memory Database based on Lambda function
 
-<b> Stable Version : 0.0.0.5 </b>  
+<b> Stable Version : 0.0.0.6 </b>  
 <b> Lastest Version : 0.0.0.6 </b>
 
 ## Table Of Contents ##
