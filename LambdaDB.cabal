@@ -1,5 +1,5 @@
 name:                LambdaDB
-version:             0.0.0.6
+version:             0.0.0.7
 synopsis:            On-memory Database using Lambda Function environment.
 description:         Please see README.md
 homepage:            https://github.com/ailrun/LambdaDB/blob/master/README.md

@@ -1,3 +1,6 @@
+### 0.0.0.7 ###
+
+
 ### 0.0.0.6 ###
 __Fix Critical Error on Command 'Insert'__
 
