@@ -27,12 +27,12 @@ dbProc d = void . runMaybeT $ do
           newdb <- case com of
                   "" -> lift . return $ db
                   _ ->
-                    case (read com) of
-                      ComQuit -> mzero
-                      ComStatus -> lift . dbStatus $ db
-                      ComInsert k v -> lift . dbInsert k v $ db
-                      ComDelete k -> lift. dbInsert k (DBNone None) $ db
-                      ComFind k -> lift . dbFind k $ db
+                    case (readsPrec 0 com) of
+                      (ComQuit,_):_ -> mzero
+                      (ComStatus,_):_ -> lift . dbStatus $ db
+                      (ComInsert k v,_):_ -> lift . dbInsert k v $ db
+                      (ComDelete k,_):_ -> lift. dbInsert k (DBNone None) $ db
+                      (ComFind k,_):_ -> lift . dbFind k $ db
                       _ -> do
                         lift . putStrLn $ "Command Error"
                         return db

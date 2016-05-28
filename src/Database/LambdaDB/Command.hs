@@ -6,8 +6,7 @@ import Data.Char
 
 import Database.LambdaDB.DataType
 
-data Command = ComError
-             | ComQuit
+data Command = ComQuit
              | ComStatus
              | ComInsert Key DBData
              | ComDelete Key
