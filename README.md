@@ -79,6 +79,7 @@ Needs Key(Any String without whitespace) and [Values](#supporting-data-type).
 
 ```
 insert 5 [1, 2, 3]
+OK
 ```
 
 #### Delete ####
@@ -88,9 +89,10 @@ Needs Key(AnyString without whitespace).
 
 ```
 delete 5
+OK
 ```
 
-Until options supporting, this command is just alias of `insert 5 None`.
+Until options supporting, this command is just a alias of `insert <key> None`.
 
 #### Find ####
 

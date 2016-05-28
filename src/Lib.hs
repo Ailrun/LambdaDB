@@ -45,7 +45,9 @@ dbStatus db = do
 
 dbInsert :: Key -> DBData -> DB -> IO DB
 dbInsert k v db = do
-  return . insertData k v $ db
+  let newdb = insertData k v db
+  putStrLn "OK"
+  return newdb
 
 dbFind :: Key -> DB -> IO DB
 dbFind k db = do
