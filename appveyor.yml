@@ -15,6 +15,7 @@ branches:
   only:
     - master
     - /^deploy-[0-9.]*$/
+    - /^v[0-9.]*$/
   except:
     - /^devel-[0-9.]*$/
     - /^test-[0-9.]*$/
