@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 module Lib
   ( dbInit,
     dbProc,
@@ -46,6 +47,7 @@ dbProc db = void . runMaybeT $ do
 dbStatus :: DB -> IO DB
 dbStatus db = do
   putStrLn "On running"
+#if MIN_VERSION_base(4,10,0)
   isRtsStatsEnabled <- getRTSStatsEnabled
   when isRtsStatsEnabled $ do
     rtsStats <- getRTSStats
@@ -53,6 +55,15 @@ dbStatus db = do
     print $ cpu_ns rtsStats
     putStr "MEMORY USAGE: "
     putStrLn . flip addUnitTo "B" $ max_live_bytes rtsStats
+#else
+  isGCStatsEnabled <- getGCStatsEnabled
+  when isGCStatsEnabled $ do
+    gcStats <- getGCStats
+    putStr "CPU TIME: "
+    print $ cpuSeconds gcStats
+    putStr "MEMORY USAGE: "
+    putStrLn . flip addUnitTo "B" $ maxBytesUsed gcStats
+#endif
   return db
 
 addUnitTo :: (Show a, Ord a, Integral a) => a -> String -> String
