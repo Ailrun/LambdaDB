@@ -1,6 +1,5 @@
 # Lambda DB #
 
-[![](https://img.shields.io/badge/Haskell-lts--5.18-lightgrey.svg?style=flat)](https://www.haskell.org/downloads)
 [![](https://img.shields.io/badge/stack->=1.1-blue.svg?style=flat)](http://docs.haskellstack.org/en/stable/README/)
 [![](https://img.shields.io/badge/status-alpha-orange.svg?style=flat)](http://github.com/ailrun/LambdaDB)
 [![](https://img.shields.io/hackage/v/LambdaDB.svg)](http://hackage.haskell.org/package/LambdaDB)
