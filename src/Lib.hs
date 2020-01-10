@@ -7,6 +7,7 @@ module Lib
 import Control.Monad
 import Control.Monad.Trans.Class
 import Control.Monad.Trans.Maybe
+import Data.Monoid ( (<>) )
 import Database.LambdaDB
 import GHC.Stats
 
