@@ -1,8 +1,5 @@
-# Use new container infrastructure to enable caching
-sudo: false
-
 # Choose a lightweight base image; we provide our own build tools.
-language: c
+language: minimal
 
 # Caching so the next build will be fast too.
 cache:
@@ -15,11 +12,8 @@ cache:
 branches:
   only:
     - master
-    - /^deploy-[0-9.]*$/
     - /^v[0-9.]*$/
   except:
-    - /^devel-[0-9.]*$/
-    - /^test-[0-9.]*$/
     - gh-pages
 
 # Notification receivers
@@ -79,7 +73,7 @@ matrix:
     addons: {apt: {packages: [libgmp-dev]}}
 
   - env: BUILD=stack ARGS="--resolver lts-9"
-    compiler: ": #stack 8.0.1"
+    compiler: ": #stack 8.0.2"
     addons: {apt: {packages: [libgmp-dev]}}
 
   - env: BUILD=stack ARGS="--resolver lts-14"
