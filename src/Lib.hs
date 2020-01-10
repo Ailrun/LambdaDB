@@ -4,12 +4,9 @@ module Lib
     dbTerm
   ) where
 
--- Standard libraries
 import Control.Monad
 import Control.Monad.Trans.Class
 import Control.Monad.Trans.Maybe
-
--- Custom libraries
 import Database.LambdaDB
 
 dbInit :: IO DB
@@ -18,27 +15,28 @@ dbInit = do
   return initDB
 
 dbProc :: DB -> IO ()
-dbProc d = void . runMaybeT $ do
+dbProc db = void . runMaybeT $ do
   lift . putStrLn $ "DB is now running"
-  void . g $ d
-  return ()
-  where g db = do
-          com <- lift getLine
-          newdb <- case com of
-                  "" -> lift . return $ db
-                  _ ->
-                    case reads com of
-                      (ComQuit, _):_ -> mzero
-                      (ComStatus, _):_ -> lift . dbStatus $ db
-                      (ComInsert k v, _):_ -> lift . dbInsert k v $ db
-                      (ComDelete k, _):_ -> do
-                        lift. print $ k
-                        lift. dbInsert k (DBNone None) $ db
-                      (ComFind k, _):_ -> lift . dbFind k $ db
-                      _ -> do
-                        lift . putStrLn $ "Command Error"
-                        return db
-          g newdb
+  go db
+  where
+    go db = do
+      com <- lift getLine
+      newdb <-
+        case com of
+          "" -> return db
+          _ ->
+            case reads com of
+              (ComQuit, _):_ -> mzero
+              (ComStatus, _):_ -> lift . dbStatus $ db
+              (ComInsert k v, _):_ -> lift . dbInsert k v $ db
+              (ComDelete k, _):_ -> do
+                lift. print $ k
+                lift. dbInsert k (DBNone None) $ db
+              (ComFind k, _):_ -> lift . dbFind k $ db
+              _ -> do
+                lift . putStrLn $ "Command Error"
+                return db
+      go newdb
 
 dbStatus :: DB -> IO DB
 dbStatus db = do
