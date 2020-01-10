@@ -15,7 +15,7 @@ data DBData = DBNone None
             | DBString String
             | DBInt Int
             | DBInteger Integer
-            | DBList ([DBData])
+            | DBList [DBData]
             | DBSet (Set DBData)
             deriving (Eq, Ord)
 

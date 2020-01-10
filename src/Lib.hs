@@ -27,7 +27,7 @@ dbProc d = void . runMaybeT $ do
           newdb <- case com of
                   "" -> lift . return $ db
                   _ ->
-                    case (readsPrec 0 com) of
+                    case reads com of
                       (ComQuit, _):_ -> mzero
                       (ComStatus, _):_ -> lift . dbStatus $ db
                       (ComInsert k v, _):_ -> lift . dbInsert k v $ db
@@ -53,7 +53,7 @@ dbInsert k v db = do
 
 dbFind :: Key -> DB -> IO DB
 dbFind k db = do
-  putStrLn . show . findData k $ db
+  print . findData k $ db
   return db
 
 dbTerm :: IO ()

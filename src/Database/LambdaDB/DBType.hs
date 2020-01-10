@@ -9,15 +9,15 @@ module Database.LambdaDB.DBType
 -- Custom Libraries
 import Database.LambdaDB.DataType
 
-data DB = Lambda {unLambda::Key -> DBData}
+newtype DB = Lambda {unLambda::Key -> DBData}
 
 initDB :: DB
 initDB = Lambda
-         $ (\_ -> DBNone None)
+         $ \_ -> DBNone None
 
 insertData :: Key -> DBData -> DB -> DB
 insertData key value db = Lambda
-                          $ \x -> if (x == key) then
+                          $ \x -> if x == key then
                                     value
                                   else
                                     unLambda db x

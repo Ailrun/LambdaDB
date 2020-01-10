@@ -28,7 +28,7 @@ instance Read Command where
             (s, t) <- lex x,
             "insert" <- [map toLower s],
             (k, u) <- lex t,
-            (v, w) <- readsPrec 0 u]) r
+            (v, w) <- reads u]) r
     ++ readParen (d > app_prec)
     (\x -> [(ComDelete k, u) |
             (s, t) <- lex x,
